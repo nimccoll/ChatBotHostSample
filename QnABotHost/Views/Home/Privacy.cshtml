@@ -1,0 +1,27 @@
+﻿<!--
+//===============================================================================
+// Microsoft FastTrack for Azure
+// Azure Bot Framework web host sample
+//===============================================================================
+// Copyright © Microsoft Corporation.  All rights reserved.
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
+// OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
+// LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+// FITNESS FOR A PARTICULAR PURPOSE.
+//===============================================================================
+-->
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseWebChat" role="button" aria-expanded="false" aria-controls="collapseWebChat">
+        Chat
+    </a>
+</p>
+<!-- This page is using the default markdown renderer and a simple iframe to host the chat bot -->
+<div class="collapse" id="collapseWebChat">
+    <iframe src='https://webchat.botframework.com/embed/nimccfta-qnamaker-demo1-bot?t=@ViewBag.DirectLineToken' height="400" width="400"></iframe>
+</div>
+

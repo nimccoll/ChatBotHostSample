@@ -1,0 +1,63 @@
+﻿<!--
+//===============================================================================
+// Microsoft FastTrack for Azure
+// Azure Bot Framework web host sample
+//===============================================================================
+// Copyright © Microsoft Corporation.  All rights reserved.
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY
+// OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT
+// LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+// FITNESS FOR A PARTICULAR PURPOSE.
+//===============================================================================
+-->
+@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+    }
+
+    #webchat {
+        height: 400px;
+        width: 400px;
+    }
+</style>
+
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseWebChat" role="button" aria-expanded="false" aria-controls="collapseWebChat">
+        Chat
+    </a>
+</p>
+<div class="collapse" id="collapseWebChat">
+    <div id="webchat" role="main" class="card"></div>
+</div>
+
+@section Scripts
+{
+    <!-- This page is using the third-party markdown-it markdown rendering library so opened links appear in the same tab -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/markdown-it/12.0.6/markdown-it.js"></script>
+    <!-- This page is using the WebChat control to host the chat bot -->
+    <script crossorigin="anonymous"
+            src="https://cdn.botframework.com/botframework-webchat/latest/webchat.js"></script>
+    <script>
+        var md = window.markdownit(); // Create an instance of markdown-it
+        window.WebChat.renderWebChat(
+            {
+                directLine: window.WebChat.createDirectLine({
+                    token: '@ViewBag.DirectLineToken'
+                }),
+                renderMarkdown: text => md.render(text), // Use markdown-it as the markdown renderer
+                styleOptions: {
+                    backgroundColor: 'Cornsilk'
+                }
+            },
+            document.getElementById('webchat')
+        );
+    </script>
+}
